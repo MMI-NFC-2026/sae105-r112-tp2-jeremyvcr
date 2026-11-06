@@ -29,3 +29,15 @@ html:has(.menu:popover-open) {
 .burger {
   cursor: pointer;
 }
+
+/* À l'ouverture, même position « hamburger » */
+@starting-style {
+  .menu:popover-open .burger--close {
+    transform: none;
+  }
+}
+
+.menu:popover-open .burger--close {
+  transform: rotate(90deg);
+  transition: 400ms;
+}
