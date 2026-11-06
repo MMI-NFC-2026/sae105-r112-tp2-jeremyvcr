@@ -12,11 +12,22 @@
   <header class="header header--home">
 
     <!-- Menu principal -->
+    <!-- popovertarget="menu" relie ce bouton à l'élément dont l'id est "menu".
+         Sans JavaScript, le clic bascule entre l'ouverture et la fermeture du popover.
+         aria-label donne un nom accessible au bouton représenté par un emoji.
+         MDN : https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/button -->
     <button class="burger" type="button" popovertarget="menu" aria-label="Menu">
       🍔
     </button>
 
+    <!-- popover masque le menu au départ et permet son affichage au-dessus de la page.
+         Sans valeur, popover utilise le mode auto : Échap ou un clic extérieur le ferme.
+         L'id unique "menu" permet aux deux boutons de cibler ce même menu.
+         MDN : https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/popover -->
     <nav class="menu" id="menu" popover aria-label="Main menu">
+      <!-- popovertargetaction="hide" demande explicitement de fermer le menu ciblé.
+           autofocus place le focus sur ce bouton à l'ouverture : Entrée permet de fermer.
+           aria-label indique la fonction du bouton aux technologies d'assistance. -->
       <button 
       class="menu__close burger burger--close"
       type="button"

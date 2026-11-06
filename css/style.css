@@ -1,17 +1,29 @@
 /* code css à faire */
 /* --- menu (popover plein écran) --- */
 
+/* .menu sélectionne les éléments qui portent class="menu" dans le HTML.
+   Le navigateur positionne déjà le popover à l'écran ; width et height à 100%
+   étendent le panneau, et border: 0 supprime sa bordure. */
 .menu {
   width: 100%;
   height: 100%;
   border: 0;
+  /* Le fondu dure 400 ms. allow-discrete autorise aussi les transitions des
+     propriétés sans valeurs intermédiaires, comme display (none / block).
+     MDN : https://developer.mozilla.org/fr/docs/Web/CSS/Reference/Properties/transition-behavior */
   transition: 400ms allow-discrete;
+  /* Une opacité de 0 rend le menu transparent ; elle sert d'état de départ du fondu. */
   opacity: 0;
 }
+/* :popover-open cible le menu ouvert. opacity: 1 le rend opaque,
+   et la transition fait évoluer progressivement l'opacité. */
 .menu:popover-open {
   opacity: 1;
 }
 
+/* @starting-style fournit l'opacité de départ lors de l'apparition du menu,
+   même lorsqu'il était auparavant masqué par display: none.
+   MDN : https://developer.mozilla.org/fr/docs/Web/CSS/Reference/At-rules/@starting-style */
 @starting-style {
   .menu:popover-open {
     opacity: 0;
@@ -20,28 +32,40 @@
 
 /* Page figée quand le menu est ouvert */
 
+/* html est la racine de la page. :has() vérifie qu'elle contient un menu ouvert.
+   overflow: hidden empêche alors de faire défiler la page derrière le menu.
+   MDN : https://developer.mozilla.org/fr/docs/Web/CSS/Reference/Selectors/:has */
 html:has(.menu:popover-open) {
   overflow: hidden;
 }
 
 /* --- burger --- */
 
+/* cursor: pointer affiche un curseur en forme de main au survol du bouton. */
 .burger {
   cursor: pointer;
 }
 
 /* À l'ouverture, même position « hamburger » */
+/* Le bouton commence sans rotation (transform: none) à l'ouverture du menu. */
 @starting-style {
   .menu:popover-open .burger--close {
     transform: none;
   }
 }
 
+/* L'espace entre les sélecteurs cible le bouton .burger--close situé dans le menu ouvert.
+   rotate(90deg) le tourne d'un quart de tour ; transition: 400ms anime ce changement.
+   Il conserve cette orientation tant que le menu reste ouvert. */
 .menu:popover-open .burger--close {
   transform: rotate(90deg);
   transition: 400ms;
 }
 
+/* Cette media query applique la règle si l'utilisateur préfère réduire les mouvements.
+   La virgule regroupe le menu et son bouton de fermeture dans une même règle.
+   transition: none demande de supprimer les transitions, sans supprimer la rotation finale.
+   MDN : https://developer.mozilla.org/fr/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
   .menu,
   .menu .burger--close {
