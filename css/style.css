@@ -5,6 +5,17 @@
   width: 100%;
   height: 100%;
   border: 0;
+  transition: 400ms allow-discrete;
+  opacity: 0;
+}
+.menu:popover-open {
+  opacity: 1;
+}
+
+@starting-style {
+  .menu:popover-open {
+    opacity: 0;
+  }
 }
 
 /* Page figée quand le menu est ouvert */
