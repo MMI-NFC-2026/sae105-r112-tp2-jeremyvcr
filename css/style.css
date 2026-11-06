@@ -12,3 +12,9 @@
 html:has(.menu:popover-open) {
   overflow: hidden;
 }
+
+/* --- burger --- */
+
+.burger {
+  cursor: pointer;
+}
