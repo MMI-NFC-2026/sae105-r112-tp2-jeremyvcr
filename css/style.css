@@ -6,3 +6,9 @@
   height: 100%;
   border: 0;
 }
+
+/* Page figée quand le menu est ouvert */
+
+html:has(.menu:popover-open) {
+  overflow: hidden;
+}
