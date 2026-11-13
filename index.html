@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Test de menu</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="src/css/styles.css">
 </head>
 
 <body>
@@ -37,11 +38,21 @@
         autofocus
       >🍔
       </button>
+      <h4>Menu</h4>
       <ul class="menu__list">
-        <li class="menu__item"><a class="menu__link" href="#">Item de menu un</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Item de menu deux</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Item de menu trois</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Item de menu quatre</a></li>
+        <li class="menu__item"><a class="menu__link" href="index.html">Accueil</a></li>
+        <li class="menu__item"><a class="menu__link" href="cats/index.html">Les chats</a>
+          <ul>
+            <li><a href="cats/chat-1.html">Chat 1</a></li>
+            <li><a href="cats/chat-2.html">Chat 2</a></li>
+          </ul>
+        </li>
+        <li class="menu__item"><a class="menu__link" href="dogs/index.html">Les chiens</a>
+          <ul>
+            <li><a href="dogs/chien-1.html">Chien 1</a></li>
+            <li><a href="dogs/chien-2.html">Chien 2</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- Fin du menu principal -->
@@ -57,6 +68,7 @@
   </main>
   <!-- Fin du contenu principal -->
 
+  <script src="src/js/script.js"></script>
 </body>
 
 </html>

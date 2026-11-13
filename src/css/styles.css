@@ -33,3 +33,34 @@ ul {
 li {
     margin: 10px 0;
 }
+
+/* Styles pour les images */
+.media--fullwidth {
+    width: 100%;
+    height: auto;
+}
+
+/* Icônes avant les menus */
+nav h4::before {
+    content: url("../../public/icones/ZondiconsBookReference.svg");
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+nav ul li a::before {
+    content: url("../../public/icones/ZondiconsShoppingCart.svg");
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+nav ul li ul li a::before {
+    content: url("../../public/icones/ZondiconsAlignJustified.svg");
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
