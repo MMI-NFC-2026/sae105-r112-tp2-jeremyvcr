@@ -6,25 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Test de menu</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="src/css/styles.css">
 </head>
 
 <body>
   <header class="header header--home">
 
     <!-- Menu principal -->
-    <button class="burger" type="button" aria-label="Menu">
+    <!-- popovertarget="menu" relie ce bouton à l'élément dont l'id est "menu".
+         Sans JavaScript, le clic bascule entre l'ouverture et la fermeture du popover.
+         aria-label donne un nom accessible au bouton représenté par un emoji.
+         MDN : https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Elements/button -->
+    <button class="burger" type="button" popovertarget="menu" aria-label="Menu">
       🍔
     </button>
 
-    <nav class="menu" aria-label="Main menu">
-      <button class="menu__close burger burger--close" type="button" aria-label="Close the menu">
-        🍔
+    <!-- popover masque le menu au départ et permet son affichage au-dessus de la page.
+         Sans valeur, popover utilise le mode auto : Échap ou un clic extérieur le ferme.
+         L'id unique "menu" permet aux deux boutons de cibler ce même menu.
+         MDN : https://developer.mozilla.org/fr/docs/Web/HTML/Reference/Global_attributes/popover -->
+    <nav class="menu" id="menu" popover aria-label="Main menu">
+      <!-- popovertargetaction="hide" demande explicitement de fermer le menu ciblé.
+           autofocus place le focus sur ce bouton à l'ouverture : Entrée permet de fermer.
+           aria-label indique la fonction du bouton aux technologies d'assistance. -->
+      <button 
+      class="menu__close burger burger--close"
+      type="button"
+       popovertarget="menu"
+        popovertargetaction="hide"
+        aria-label="Close the menu"
+        autofocus
+      >🍔
       </button>
+      <h4>Menu</h4>
       <ul class="menu__list">
-        <li class="menu__item"><a class="menu__link" href="#">Item de menu un</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Item de menu deux</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Item de menu trois</a></li>
-        <li class="menu__item"><a class="menu__link" href="#">Item de menu quatre</a></li>
+        <li class="menu__item"><a class="menu__link" href="index.html">Accueil</a></li>
+        <li class="menu__item"><a class="menu__link" href="cats/index.html">Les chats</a>
+          <ul>
+            <li><a href="cats/chat-1.html">Chat 1</a></li>
+            <li><a href="cats/chat-2.html">Chat 2</a></li>
+          </ul>
+        </li>
+        <li class="menu__item"><a class="menu__link" href="dogs/index.html">Les chiens</a>
+          <ul>
+            <li><a href="dogs/chien-1.html">Chien 1</a></li>
+            <li><a href="dogs/chien-2.html">Chien 2</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
     <!-- Fin du menu principal -->
@@ -40,6 +68,7 @@
   </main>
   <!-- Fin du contenu principal -->
 
+  <script src="src/js/script.js"></script>
 </body>
 
 </html>
